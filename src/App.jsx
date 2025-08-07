@@ -9,6 +9,8 @@ import Footer from "./components/Footer";
 import SignupPage from "./pages/SignupPage";
 import { useContext } from "react";
 import { UserContext } from "./context/UserContex";
+import PublicReviewPage from "./pages/PublicReviewPage";
+import PageNotFound from "./pages/PageNotFound";
 
 function App() {
   // const navigate = useNavigate()
@@ -31,6 +33,7 @@ function App() {
         <Route path="/pricing" element={<PricingPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/signup" element={<SignupPage />} />
+        <Route path="/public/review/:slug" element={<PublicReviewPage />} />
         <Route
           path="/dashboard"
           element={user ? <DashboardPage /> : <LoginPage />}
@@ -39,6 +42,7 @@ function App() {
           path="/business/:slug"
           element={user ? <BusinessPage /> : <LoginPage />}
         />
+        <Route path="*" element={<PageNotFound />} />
       </Routes>
       <Footer />
     </>

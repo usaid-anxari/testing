@@ -1,14 +1,13 @@
 import { useContext } from "react";
-import EmbedWidget from "../features/widgets/EmbedWidget.tsx.tsx";
-import video from "../mock/test-video.webm"
-import audio from "../mock/test.mp3"
-import { UserContext } from "../context/UserContex.tsx";
-
+import EmbedWidget from "../features/widgets/EmbedWidget.jsx";
+import video from "../mock/test-video.webm";
+import audio from "../mock/test.mp3";
+import { UserContext } from "../context/UserContex.jsx";
 
 const mockReviews = [
   {
     id: "1",
-    type: "video" ,
+    type: "video",
     content: video,
     author: "Sarah A.",
     approved: true,
@@ -16,7 +15,7 @@ const mockReviews = [
   },
   {
     id: "2",
-    type: "written" ,
+    type: "written",
     content: "Loved it! Easy to use and excellent support.",
     author: "Ali R.",
     approved: true,
@@ -33,13 +32,15 @@ const mockReviews = [
 ];
 
 const PublicReviewPage = () => {
+  const { reviews } = useContext(UserContext);
 
-  const {reviews} = useContext(UserContext)
-  console.log(reviews);
-  
   return (
     <div className="min-h-screen bg-gray-100 py-10">
-      {reviews.filter((a)=>a.approved===true)? <EmbedWidget reviews={reviews} style="light" /> : <div className="text-3xl text-gray-500">no reviews</div>}
+      {reviews.filter((a) => a.approved === true) ? (
+        <EmbedWidget reviews={reviews} style="light" />
+      ) : (
+        <div className="text-3xl text-gray-500">no reviews</div>
+      )}
     </div>
   );
 };
